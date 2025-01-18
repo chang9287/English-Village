@@ -202,37 +202,6 @@ function responsiveSideMenuClick(){
 }
 responsiveSideMenuClick();
 
-/*********** Map APi ***********/
-// 라이브 서버에서는 작동X 아래 코드도 안 보여줘서 주석처리 함 (서버에 올리기 전 수정 필수)
-function map(){
-  var mapOptions = {
-    center: new naver.maps.LatLng(37.587365, 126.712584), //인천광역시영마을 좌표
-    zoom: 10
-  };
-  var map = new naver.maps.Map('map', mapOptions); //지도 초기화
-  var HOME_PATH = window.HOME_PATH || '.';
-  var position = new naver.maps.LatLng(37.587365, 126.712584);
-
-  var map = new naver.maps.Map('map', {
-      center: position,
-      zoom: 17
-  });
-
-  var markerOptions = {
-      position: position.destinationPoint(90, 15), //동쪽으로 15m 이동한 좌표
-      map: map, //맵 객체에 불러옴
-      icon: {
-          url: HOME_PATH +'/images/marker.png',
-          size: new naver.maps.Size(60, 83), //이미지 크기
-          origin: new naver.maps.Point(0, 0), //이미지 시작 기준
-          anchor: new naver.maps.Point(30, 10) //이미지 좌상단 기준 왼쪽으로 30px, 위로 10px만큼 이동
-      }
-  };
-  var marker = new naver.maps.Marker(markerOptions); //마커 실행
-}
-map();
-
-// var marker = new naver.maps.Marker(markerOptions);
 
 /*********** subpage map subway_bus tab ***********/
 function subwayBusTab(){

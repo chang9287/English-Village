@@ -10,7 +10,14 @@
   <link rel="stylesheet" href="/css/subpage_map.css">
   <link rel="stylesheet" href="/css/subpage_map_tablet.css">
   <link rel="stylesheet" href="/css/subpage_map_mobile.css">
-  <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ztuedrtd4t"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b6bb0e7aca5a8a0d3244d54617b59d1d"></script>
+
+  <style>
+    #map {
+        width: 100%;
+        height: 500px;
+    }
+  </style>
 </head>
 
 <body style="overflow-x: hidden">
@@ -384,6 +391,16 @@
     </span>
   </a>
 
+
+  
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+		var map = new kakao.maps.Map(container, options);
+	</script>
   <script src="/subPage/map/js/subpage_map.js"></script>
 </body>
 </html>
