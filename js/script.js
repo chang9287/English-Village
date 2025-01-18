@@ -212,29 +212,29 @@ const slideWidthGap = 20;
 let currentSlide = 0;
 let slideToShow = 3;
 
-// MatchMedia 설정
+//MatchMedia 설정
 const mediaQuery = window.matchMedia('(max-width: 540px)');
 
-// 초기 슬라이드 위치 설정
+//초기 슬라이드 위치 설정
 if (!mediaQuery.matches) {
-    currentSlide = 1; // 데스크탑 시작 슬라이드
+  currentSlide = 1; // 데스크탑 시작 슬라이드
 }
 
-// 슬라이드 이동 함수
+//슬라이드 이동 함수
 function goToSlide(index) {
-    currentSlide = index;
+  currentSlide = index;
 
-    // 반응형 계산식 적용
-    const calculateSlide = mediaQuery.matches
-        ? (slideWidth) * (currentSlide) // 슬라이드 1개씩
-        : (slideWidth + slideWidthGap) * (currentSlide - 1) / 3; //슬라이드 3개로 보이는거 1개씩
+  //반응형 계산식 적용
+  const calculateSlide = mediaQuery.matches
+    ? (slideWidth) * (currentSlide) // 슬라이드 1개씩
+    : (slideWidth + slideWidthGap) * (currentSlide - 1) / 3; //슬라이드 3개로 보이는거 1개씩
 
-    slideContainer[0].style.transition = 'transform 0.5s ease';
-    slideContainer[0].style.transform = `translateX(-${calculateSlide}px)`;
+  slideContainer[0].style.transition = 'transform 0.5s ease';
+  slideContainer[0].style.transform = `translateX(-${calculateSlide}px)`;
 
-    // 페이지네이션 업데이트
-    const pagination = document.querySelectorAll(".pagination li a");
-    pagination.forEach((p, i) => p.classList.toggle('act', i === index));
+  //페이지네이션 업데이트
+  const pagination = document.querySelectorAll(".pagination li a");
+  pagination.forEach((p, i) => p.classList.toggle('act', i === index));
 }
 
 function Createpagination() {
@@ -243,126 +243,124 @@ function Createpagination() {
 
   for (let i = 0; i <= slidescnt - 1; i++) {
     if (mediaQuery.matches ? i === 0 : i === 1) {
-        pagination.innerHTML += `<li><a class="act"></a></li>`;
+      pagination.innerHTML += `<li><a class="act"></a></li>`;
     } else {
-        pagination.innerHTML += `<li><a></a></li>`;
+      pagination.innerHTML += `<li><a></a></li>`;
     }
   }
 
-    // 페이지네이션 이벤트 생성
-    const paginationlink = document.querySelectorAll(".pagination li a");
-    paginationlink.forEach((link, index) => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault(); // 기본 앵커 링크 동작을 막습니다.
-            goToSlide(index);
-        });
+  //페이지네이션 생성
+  const paginationlink = document.querySelectorAll(".pagination li a");
+  paginationlink.forEach((link, index) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      goToSlide(index);
     });
+  });
 
-    // MatchMedia 이벤트 리스너 추가 (540px 이하로 변경 시 동적 업데이트)
-    mediaQuery.addEventListener('change', () => {
-        // 페이지네이션 재생성
-        pagination.innerHTML = ""; // 기존 페이지네이션 초기화
-        Createpagination(); // 재호출로 페이지네이션 업데이트
-    });
+  //MatchMedia 이벤트 추가
+  mediaQuery.addEventListener('change', () => {
+    // 페이지네이션 다시 생성
+    pagination.innerHTML = ""; // 기존 페이지네이션 초기화
+    Createpagination();
+  });
 }
 
-let Autoslideactive = null; // 슬라이드 자동 이동 호출을 변수화
+let Autoslideactive = null;
 
-// 슬라이드 자동 이동
+//슬라이드 자동 이동
 function autoslide() {
-    // 화면 크기에 따라 다른 조건 적용
-    const index = mediaQuery.matches
-        ? (currentSlide < slidescnt - 1 ? currentSlide + 1 : 0) // 540px 이하: 0번부터 7번까지 순환
-        : (currentSlide < slidescnt - 2 ? currentSlide + 1 : 1); // 540px 초과: 1번부터 6번까지 순환
+  const index = mediaQuery.matches
+    ? (currentSlide < slidescnt - 1 ? currentSlide + 1 : 0) // 540px 이하, 0 ~ 7
+    : (currentSlide < slidescnt - 2 ? currentSlide + 1 : 1); // 540px 초과, 1 ~ 6
 
-    currentSlide = index; // 현재 슬라이드 상태 업데이트
-    goToSlide(index);
+  currentSlide = index;
+  goToSlide(index);
 }
 
-// 페이지 리사이즈 이벤트로 계산식 동기화
 mediaQuery.addEventListener('change', () => goToSlide(currentSlide));
 
 /*  마우스 감지 시 슬라이드 자동 멈추기 */
 function Createmousedetector() {
-    // 마우스가 슬라이드에 올라왔을 때
-    slideContainer[0].addEventListener("mouseover", (event) => {
-        clearInterval(Autoslideactive);
-    });
-    // 마우스가 슬라이드에서 나온 경우 다시 실행
-    slideContainer[0].addEventListener("mouseout", (event) => {
-        Autoslideactive = setInterval(autoslide, 3000);
-    });
-}
-
-// 초기화 함수
-function init() {
-    Createpagination();
-    if (!mediaQuery.matches) {
-        goToSlide(1); // 데스크탑에서는 두 번째 슬라이드부터 시작
-    }
+  // 마우스가 슬라이드에 올라왔을 때
+  slideContainer[0].addEventListener("mouseover", (event) => {
+    clearInterval(Autoslideactive);
+  });
+  // 마우스가 슬라이드에서 나온 경우 다시 실행
+  slideContainer[0].addEventListener("mouseout", (event) => {
     Autoslideactive = setInterval(autoslide, 3000);
-    Createmousedetector();
+  });
 }
 
-// 프로그램 시작
+//초기화 함수
+function init() {
+  Createpagination();
+  if (!mediaQuery.matches) {
+    goToSlide(1); // 데스크탑에서는 두 번째 슬라이드부터 시작
+  }
+  Autoslideactive = setInterval(autoslide, 3000);
+  Createmousedetector();
+}
+
+//프로그램 시작
 init();
 
 /*********** section ICEV Program 슬라이드 안 클릭 함수 ***********/
 function programClick() {
-    // 모든 .item 요소 선택
-    let slides = document.querySelectorAll(".program_slide");
+  //모든 .item 요소 선택
+  let slides = document.querySelectorAll(".program_slide");
 
-    // 각 item에 대해 클릭 이벤트 등록
-    slides.forEach(function (item) {
-        // 각 item 내의 character, image 요소 선택
-        let slideFront = item.querySelector(".program_character");
-        let slideBack = item.querySelector(".program_image");
+  //각 item에 대해 클릭 이벤트 등록
+  slides.forEach(function (item) {
+    // 각 item 내의 character, image 요소 선택
+    let slideFront = item.querySelector(".program_character");
+    let slideBack = item.querySelector(".program_image");
 
-        // 초기 상태 플래그
-        let isFlipped = false;
+    //초기 상태 플래그
+    let isFlipped = false;
 
-        // character 클릭 이벤트
-        slideFront.addEventListener("click", () => {
-            if (!isFlipped) {
-                // 애니메이션 실행
-                slideFront.classList.remove("active_animation2");
-                slideBack.classList.remove("active_animation1");
+    //character 클릭 이벤트
+    slideFront.addEventListener("click", () => {
+      if (!isFlipped) {
+        // 애니메이션 실행
+        slideFront.classList.remove("active_animation2");
+        slideBack.classList.remove("active_animation1");
 
-                slideFront.offsetWidth = slideFront.offsetWidth; // Reflow
-                slideBack.offsetWidth = slideBack.offsetWidth;
+        slideFront.offsetWidth = slideFront.offsetWidth; // Reflow
+        slideBack.offsetWidth = slideBack.offsetWidth;
 
-                slideFront.classList.add("active_animation1");
-                slideBack.classList.add("active_animation2");
+        slideFront.classList.add("active_animation1");
+        slideBack.classList.add("active_animation2");
 
-                // z-index 변경
-                slideFront.style.zIndex = "0";
-                slideBack.style.zIndex = "5";
+        // z-index 변경
+        slideFront.style.zIndex = "0";
+        slideBack.style.zIndex = "5";
 
-                isFlipped = true;
-            }
-        });
-
-        // image 클릭 이벤트
-        slideBack.addEventListener("click", () => {
-            if (isFlipped) {
-                // 애니메이션 실행
-                slideFront.classList.remove("active_animation1");
-                slideBack.classList.remove("active_animation2");
-
-                slideFront.offsetWidth = slideFront.offsetWidth; // Reflow
-                slideBack.offsetWidth = slideBack.offsetWidth;
-
-                slideFront.classList.add("active_animation2");
-                slideBack.classList.add("active_animation1");
-
-                // z-index 변경
-                slideFront.style.zIndex = "5";
-                slideBack.style.zIndex = "0";
-
-                isFlipped = false;
-            }
-        });
+        isFlipped = true;
+      }
     });
+
+    // image 클릭 이벤트
+    slideBack.addEventListener("click", () => {
+      if (isFlipped) {
+        // 애니메이션 실행
+        slideFront.classList.remove("active_animation1");
+        slideBack.classList.remove("active_animation2");
+
+        slideFront.offsetWidth = slideFront.offsetWidth; // Reflow
+        slideBack.offsetWidth = slideBack.offsetWidth;
+
+        slideFront.classList.add("active_animation2");
+        slideBack.classList.add("active_animation1");
+
+        // z-index 변경
+        slideFront.style.zIndex = "5";
+        slideBack.style.zIndex = "0";
+
+        isFlipped = false;
+      }
+    });
+  });
 }
 // 프로그램 시작
 programClick();
