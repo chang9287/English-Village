@@ -66,27 +66,27 @@
 
 |                       서브 페이지(마을소개) - 메인                      |                      서브 페이지(마을소개) - 테블릿                      |                       서브 페이지(마을소개) -모바일                     |
 | :---------------------------------------------------------------------: | :---------------------------------------------------------------------: | :---------------------------------------------------------------------: |
-| <img src="images/subPage_subNews.png" alt="Sample Page" height="250px" /> | <img src="images/subPage_subNews_tablet.png" alt="Sample Page" height="250px" /> | <img src="images/subPage_subNews_mobile.png" alt="Sample Page" height="250px" /> |
+| <img src="images/Readme Image/subpage-intro.png" alt="Sample Page" height="250px" /> | <img src="images/Readme Image/subpage-intro-tablet.png" alt="Sample Page" height="250px" /> | <img src="images/Readme Image/subpage-intro-mobile.png" alt="Sample Page" height="250px" /> |
 <br />
 
 |                     서브 페이지(오시는 길) -메인                        |                      서브 페이지(오시는 길) -테블릿                      |                       서브 페이지(오시는 길) -모바일                    |
 | :---------------------------------------------------------------------: | :---------------------------------------------------------------------: | :---------------------------------------------------------------------: |
-| <img src="images/subPage_faq.png" alt="Sample Page" height="250px" /> | <img src="images/subPage_faq_tablet.png" alt="Sample Page" height="250px" /> | <img src="images/subPage_faq_mobile.png" alt="Sample Page" height="250px" /> |
+| <img src="images/Readme Image/subpage-map.png" alt="Sample Page" height="250px" /> | <img src="images/Readme Image/subpage-map-tablet.png" alt="Sample Page" height="250px" /> | <img src="images/Readme Image/subpage-map-mobile.png" alt="Sample Page" height="250px" /> |
 <br />
 
 |                    서브 페이지(학습 테스트) -메인                      |                      서브 페이지(학습 테스트) -테블릿                     |                      서브 페이지(학습 테스트) -모바일                   |
 | :---------------------------------------------------------------------: | :---------------------------------------------------------------------: | :---------------------------------------------------------------------: |
-| <img src="images/subPage_faq.png" alt="Sample Page" height="250px" /> | <img src="images/subPage_faq_tablet.png" alt="Sample Page" height="250px" /> | <img src="images/subPage_faq_mobile.png" alt="Sample Page" height="250px" /> |
+| <img src="images/Readme Image/subpage-test.png" alt="Sample Page" height="250px" /> | <img src="images/Readme Image/subpage-test-tablet.png" alt="Sample Page" height="250px" /> | <img src="images/Readme Image/subpage-test-mobile.png" alt="Sample Page" height="250px" /> |
 <br />
 
 |                   서브 페이지(프로그램 신청) -메인                       |                    서브 페이지(프로그램 신청) -테블릿                   |                      서브 페이지(프로그램 신청) -모바일                 |
 | :---------------------------------------------------------------------: | :---------------------------------------------------------------------: | :---------------------------------------------------------------------: |
-| <img src="images/subPage_faq.png" alt="Sample Page" height="250px" /> | <img src="images/subPage_faq_tablet.png" alt="Sample Page" height="250px" /> | <img src="images/subPage_faq_mobile.png" alt="Sample Page" height="250px" /> |
+| <img src="images/Readme Image/subpage-reservation.png" alt="Sample Page" height="250px" /> | <img src="images/Readme Image/subpage-reservation-tablet.png" alt="Sample Page" height="250px" /> | <img src="images/Readme Image/subpage-reservation-mobile.png" alt="Sample Page" height="250px" /> |
 <br />
 
 |                   서브 페이지(프로그램 예약) -메인                       |                    서브 페이지(프로그램 예약) -테블릿                   |                     서브 페이지(프로그램 예약) -모바일                   |
 | :---------------------------------------------------------------------: | :---------------------------------------------------------------------: | :---------------------------------------------------------------------: |
-| <img src="images/subPage_faq.png" alt="Sample Page" height="250px" /> | <img src="images/subPage_faq_tablet.png" alt="Sample Page" height="250px" /> | <img src="images/subPage_faq_mobile.png" alt="Sample Page" height="250px" /> |
+| <img src="images/Readme Image/subpage-reservation-calendar.png" alt="Sample Page" height="250px" /> | <img src="images/Readme Image/subpage-reservation-calendar-tablet.png" alt="Sample Page" height="250px" /> | <img src="images/Readme Image/subpage-reservation-calendar-mobile.png" alt="Sample Page" height="250px" /> |
 <br />
 
 
